@@ -111,7 +111,6 @@ public class MlmController {
                 user.setAvatarUrl(data.get("avatarUrl").toString());
                 user.setNickNameP(data.get("nickName").toString());
                 user.setNickName(data.get("nickName").toString());
-
                 user.setCountry(data.get("country").toString());
                 user.setGender(data.get("gender").toString());
                 user.setProvince(data.get("province").toString());

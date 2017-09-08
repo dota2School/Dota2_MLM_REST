@@ -11,7 +11,7 @@ public class BindRequest {
     //{"nikeName":"xuxue哈","roleType":"1","classType":"初级班","contents":"1号位","rankScore":"2000","steamID":"","session":"oUtn60MyXkjGjhLGD1PL-KaaXmqg"}
     private String session;
     private String roleType;
-    private String nikeName;
+    private String nickName;
     private String classType;
     private String steamID;
     private String rankScore;
@@ -44,11 +44,11 @@ public class BindRequest {
     }
 
     public String getNikeName() {
-        return nikeName;
+        return nickName;
     }
 
     public void setNikeName(String nikeName) {
-        this.nikeName = nikeName;
+        this.nickName = nikeName;
     }
 
     public String getClassType() {
