@@ -9,7 +9,7 @@ public class UserInfo {
     private String nickName;
     private String roleType;
     private String classType;
-    private String streamId;
+    private String steamID;
     private String rankScore;
     private String contents;
     private String avatarUrl;
@@ -65,11 +65,11 @@ public class UserInfo {
     }
 
     public String getStreamId() {
-        return streamId;
+        return steamID;
     }
 
     public void setStreamId(String streamId) {
-        this.streamId = streamId;
+        this.steamID = streamId;
     }
 
     public String getRankScore() {

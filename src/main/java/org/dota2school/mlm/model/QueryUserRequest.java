@@ -7,7 +7,6 @@ public class QueryUserRequest {
 
     private String session;
 
-
     public String getSession() {
         return session;
     }
