@@ -1,5 +1,6 @@
 package org.dota2school.mlm.controller;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.dota2school.mlm.frame.AppConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,7 +51,8 @@ public class UploadController {
         FileInputStream fis = null;
         try {
             fis = (FileInputStream) multiReq.getFile("filePath").getInputStream();
-            File file  = new File(config.getPath()+"/"+session + "/"+uploadFileName + "."+ uploadFileSuffix);
+            String fileName = DigestUtils.md5Hex(uploadFileName + "."+ uploadFileSuffix+System.currentTimeMillis());
+            File file  = new File(config.getPath()+"/"+session + "/"+fileName+"."+uploadFileSuffix);
             if(!file.getParentFile().exists()){
                 file.getParentFile().mkdirs();
             }
@@ -62,6 +64,7 @@ public class UploadController {
                 fos.flush();
                 i = fis.read(temp);
             }
+            return "/"+session + "/"+fileName+"."+uploadFileSuffix;
         } catch (IOException e) {
             LOG.info("Failed write file",e);
         } finally {
@@ -80,8 +83,7 @@ public class UploadController {
                 }
             }
         }
-        return "/"+session +"/"+ uploadFileName
-                + "." + uploadFileSuffix;
+        return "";
     }
 
 }
