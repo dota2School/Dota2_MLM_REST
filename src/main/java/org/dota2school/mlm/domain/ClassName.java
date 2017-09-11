@@ -21,11 +21,30 @@ public class ClassName {
     @Column(name = "orders")
     private int order;
 
+    @Column(name="type")
+    private String type;
+
     public String getClassName() {
         return className;
     }
 
     public void setClassName(String className) {
         this.className = className;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
     }
 }

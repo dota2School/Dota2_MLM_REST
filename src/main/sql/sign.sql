@@ -52,20 +52,34 @@ UPDATE user set class_type='提高班' WHERE class_type = '中级班' or class_t
 
 
 CREATE table class_name(
+  type VARCHAR(50),
   name varchar(50),
   update_time TIMESTAMP,
   orders int,
   PRIMARY KEY(name)
 );
 
-insert into class_name values('萌新(1)班',now(),1);
-insert into class_name values('萌新(2)班',now(),2);
-insert into class_name values('萌新(3)班',now(),3);
-insert into class_name values('萌新(4)班',now(),4);
-insert into class_name values('萌新(5)班',now(),5);
-insert into class_name values('萌新(6)班',now(),6);
-insert into class_name values('萌新(7)班',now(),7);
-insert into class_name values('萌新(8)班',now(),8);
-insert into class_name values('萌新(9)班',now(),9);
-insert into class_name values('萌新(10)班',now(),10);
-insert into class_name values('萌新(11)班',now(),11);
+insert into class_name values('萌新','萌新(1)班',now(),1);
+insert into class_name values('萌新','萌新(2)班',now(),2);
+insert into class_name values('萌新','萌新(3)班',now(),3);
+insert into class_name values('萌新','萌新(4)班',now(),4);
+insert into class_name values('萌新','萌新(5)班',now(),5);
+insert into class_name values('萌新','萌新(6)班',now(),6);
+insert into class_name values('萌新','萌新(7)班',now(),7);
+insert into class_name values('萌新','萌新(8)班',now(),8);
+insert into class_name values('萌新','萌新(9)班',now(),9);
+insert into class_name values('萌新','萌新(10)班',now(),10);
+insert into class_name values('萌新','萌新(11)班',now(),11);
+
+
+insert into class_name values('提高','提高(1)班',now(),1);
+insert into class_name values('提高','提高(2)班',now(),2);
+insert into class_name values('提高','提高(3)班',now(),3);
+insert into class_name values('提高','提高(4)班',now(),4);
+insert into class_name values('提高','提高(5)班',now(),5);
+insert into class_name values('提高','提高(6)班',now(),6);
+insert into class_name values('提高','提高(7)班',now(),7);
+insert into class_name values('提高','提高(8)班',now(),8);
+insert into class_name values('提高','提高(9)班',now(),9);
+insert into class_name values('提高','提高(10)班',now(),10);
+insert into class_name values('提高','提高(11)班',now(),11);
