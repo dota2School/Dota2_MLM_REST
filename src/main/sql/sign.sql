@@ -47,7 +47,7 @@ ALTER table `user` add COLUMN country VARCHAR(50);
 alter TABLE `user` add COLUMN province VARCHAR(50);
 alter TABLE `user` add COLUMN city VARCHAR(50);
 
-update table user set class_type='萌新班' WHERE class_type = '初级班';
+update user set class_type='萌新班' WHERE class_type = '初级班';
 UPDATE user set class_type='提高班' WHERE class_type = '中级班' or class_type='高级班';
 
 

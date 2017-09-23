@@ -38,7 +38,7 @@ public class TestController {
      *
      * @return
      */
-    protected static SSLConnectionSocketFactory createSSLConnSocketFactory() {
+    public  static SSLConnectionSocketFactory createSSLConnSocketFactory() {
         SSLConnectionSocketFactory sslsf = null;
         try {
             SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(null, new TrustStrategy() {

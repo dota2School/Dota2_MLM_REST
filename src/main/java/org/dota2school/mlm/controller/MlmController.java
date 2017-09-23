@@ -196,7 +196,6 @@ public class MlmController {
         userInfo.setRoleType(user.getType()+"");
         userInfo.setStreamId(user.getStreamId());
         userInfo.setClassName(user.getClassName());
-
         bindResponse.setUserInfo(userInfo);
         bindResponse.setMessage("success");
         bindResponse.setSuccess("success");
