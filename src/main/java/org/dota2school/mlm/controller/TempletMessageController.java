@@ -30,8 +30,8 @@ public class TempletMessageController {
 
             HttpUriRequest request = RequestBuilder.post("https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send")
                     .addParameter("touser",session)
-                    .addParameter("template_id","")
-                    .addParameter("form_id","")
+                    .addParameter("template_id","WAd_ueIx7sPx91AeAYV1afL3k5rnzTidrCHZc3iSxio")
+                    .addParameter("form_id",formid)
                     .addParameter("access_token",getToken())
                     .addParameter("data","{\n" +
                             "      \"keyword1\": {\n" +
