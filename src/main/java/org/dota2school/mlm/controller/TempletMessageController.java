@@ -12,6 +12,7 @@ import org.dota2school.mlm.util.G;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,13 +29,14 @@ public class TempletMessageController {
     private AppConfig appConfig;
 
     @RequestMapping(value = "/templet",method = RequestMethod.POST)
-    public String templetMessage(String session,String formid)throws Exception{
-       LOG.info("Recive session: {} formid: {}",session,formid);
+    public String templetMessage(@RequestBody String data)throws Exception{
+       LOG.info("Recive data:",data);
+       Map<String,String> d = G.G.fromJson(data,Map.class);
         try(CloseableHttpClient closeableHttpClient = HttpClients.createDefault()){
             HttpUriRequest request = RequestBuilder.post("https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send")
-                    .addParameter("touser",session)
+                    .addParameter("touser",d.get("session"))
                     .addParameter("template_id","WAd_ueIx7sPx91AeAYV1afL3k5rnzTidrCHZc3iSxio")
-                    .addParameter("form_id",formid)
+                    .addParameter("form_id",d.get("formid"))
                     .addParameter("access_token",getToken())
                     .addParameter("data","{\n" +
                             "      \"keyword1\": {\n" +
