@@ -9,6 +9,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.dota2school.mlm.frame.AppConfig;
 import org.dota2school.mlm.util.G;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,14 +22,15 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/mlm")
 public class TempletMessageController {
+    public static final Logger LOG  = LoggerFactory.getLogger(TempletMessageController.class);
 
     @Autowired
     private AppConfig appConfig;
 
     @RequestMapping(value = "/templet",method = RequestMethod.POST)
     public String templetMessage(String session,String formid)throws Exception{
+       LOG.info("Recive session: {} formid: {}",session,formid);
         try(CloseableHttpClient closeableHttpClient = HttpClients.createDefault()){
-
             HttpUriRequest request = RequestBuilder.post("https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send")
                     .addParameter("touser",session)
                     .addParameter("template_id","WAd_ueIx7sPx91AeAYV1afL3k5rnzTidrCHZc3iSxio")
@@ -52,7 +55,9 @@ public class TempletMessageController {
                             "      } \n" +
                             "  }").build();
             try(CloseableHttpResponse response = closeableHttpClient.execute(request)){
-                return EntityUtils.toString(response.getEntity());
+                String result =  EntityUtils.toString(response.getEntity());
+                LOG.info("Result: {}",result);
+                return result;
             }
         }
     }
@@ -70,6 +75,7 @@ public class TempletMessageController {
             try(CloseableHttpResponse response = closeableHttpClient.execute(request)){
                 Map<String,Object> result = G.G.fromJson(EntityUtils.toString(response.getEntity()),Map.class);
                 if(result.get("access_token")!=null){
+                    LOG.info("Request tocken {}",G.G.toJson(request));
                     return result.get("access_token").toString();
                 }else{
                     throw new IOException();
