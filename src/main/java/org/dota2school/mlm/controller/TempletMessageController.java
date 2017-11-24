@@ -24,7 +24,7 @@ public class TempletMessageController {
     @Autowired
     private AppConfig appConfig;
 
-    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    @RequestMapping(value = "/templet",method = RequestMethod.POST)
     public String templetMessage(String session,String formid)throws Exception{
         try(CloseableHttpClient closeableHttpClient = HttpClients.createDefault()){
 
