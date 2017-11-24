@@ -26,6 +26,8 @@ import java.nio.charset.Charset;
 import java.security.GeneralSecurityException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by nt on 2017/7/14.
@@ -171,6 +173,23 @@ public class TestController {
             querySignRequest.setSignId("3");
             System.out.println(G.toJson(querySignRequest));
             post.setEntity(new StringEntity(G.toJson(querySignRequest),Charset.forName("utf-8")));
+            try(CloseableHttpResponse response = client.execute(post)){
+                System.out.println(EntityUtils.toString(response.getEntity()));
+            }
+        }
+    }
+
+    @Test
+    public void test1()throws Exception{
+        Gson G = new Gson();
+        try(CloseableHttpClient client  = HttpClients.custom().setSSLSocketFactory(createSSLConnSocketFactory()).build()){
+            HttpPost post =  new HttpPost("http://localhost:9990/api/mlm/templet");
+            Map<String,Object> data = new HashMap<>();
+            data.put("session","oUtn60MfarHE-4mGKcbMKwqh0srE");
+            data.put("formid","1511513991652");
+
+            System.out.println(G.toJson(data));
+            post.setEntity(new StringEntity(G.toJson(data),Charset.forName("utf-8")));
             try(CloseableHttpResponse response = client.execute(post)){
                 System.out.println(EntityUtils.toString(response.getEntity()));
             }
