@@ -199,10 +199,10 @@ public class TestController {
     public void queryScore()throws Exception{
         Gson G = new Gson();
         try(CloseableHttpClient client  = HttpClients.custom().setSSLSocketFactory(createSSLConnSocketFactory()).build()){
-            HttpPost post =  new HttpPost("https://wxapi.fishiny.com:8100/api/mlm/score");
+            HttpPost post =  new HttpPost("https://wxapi.fishiny.com/api/mlm/score");
             QuerySignRequest querySignRequest = new QuerySignRequest();
-            querySignRequest.setSession("oUtn60G96SXl_mzoMQ2wPpJXSv00");
-            querySignRequest.setSignId("3");
+            querySignRequest.setSession("oUtn60MfarHE-4mGKcbMKwqh0srE");
+            //querySignRequest.setSignId("3");
             System.out.println(G.toJson(querySignRequest));
             post.setEntity(new StringEntity(G.toJson(querySignRequest),Charset.forName("utf-8")));
             try(CloseableHttpResponse response = client.execute(post)){
